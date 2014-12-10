@@ -178,6 +178,7 @@ BOARD_SEPOLICY_UNION += \
     recovery.te \
     rmt_storage.te \
     system_app.te \
+    system_server.te \
     tap2wake_dev.te \
     thermal-engine.te \
     ueventd.te \
