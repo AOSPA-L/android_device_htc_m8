@@ -76,6 +76,7 @@ debug.nfc.fw_download=true
 debug.nfc.fw_boot_download=false
 
 # USB
+persist.sys.isUsbOtgEnabled=true
 persist.sys.usb.config=mtp
 
 # Wifi
