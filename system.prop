@@ -71,10 +71,6 @@ ro.sf.lcd_density=480
 debug.nfc.fw_download=true
 debug.nfc.fw_boot_download=false
 
-# Recovery
-ro.cwm.enable_key_repeat=true
-ro.cwm.repeatable_keys=114,115
-
 # USB
 persist.sys.usb.config=mtp
 
