@@ -24,6 +24,9 @@ def FullOTA_InstallEnd(info):
   info.script.Mount("/system")
   info.script.AppendExtra('assert(run_program("/tmp/install/bin/variant_script.sh") == 0);')
   info.script.AppendExtra('ifelse(is_substring("0P6B20000", getprop("ro.boot.mid")), run_program("/sbin/sh", "-c", "busybox sed -i \'s/ro.com.google.clientidbase=android-google/ro.com.google.clientidbase=android-verizon/g\' /system/build.prop"));')
+  info.script.AppendExtra('ui_print("...Removing AudioFX...");')
+  info.script.AppendExtra('delete_recursive("/system/priv-app/AudioFX");')
+  info.script.AppendExtra('delete_recursive("/system/app/AudioFX");')
   info.script.Unmount("/system")
 
 def FullOTA_Assertions(info):
