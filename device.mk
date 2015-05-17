@@ -209,6 +209,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
+#Prebuilts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/QuickBoot.apk:system/app/QuickBoot/QuickBoot.apk
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
