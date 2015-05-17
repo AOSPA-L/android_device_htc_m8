@@ -209,6 +209,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Torch
 
+#Prebuilts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/QuickBoot.apk:system/app/QuickBoot/QuickBoot.apk
+
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
