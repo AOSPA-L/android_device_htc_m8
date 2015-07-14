@@ -39,7 +39,8 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.usb.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.recovery.qcom.rc
 
 # Qcom init scripts for /etc
 PRODUCT_PACKAGES += \
