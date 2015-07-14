@@ -28,8 +28,7 @@
 # 0P6B20000 - Verizon
 # 0P6B70000 - Sprint
 
-TARGET_OTA_ASSERT_DEVICE := m8,m8wl,m8wlv,m8vzw,m8whl,m8spr
-
+TARGET_OTA_ASSERT_DEVICE := htc_m8,htc_m8whl,htc_m8wl,m8,m8wl,m8wlv,m8vzw,m8whl,m8spr
 BOARD_VENDOR := htc
 
 # Bootloader
@@ -45,7 +44,6 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := krait
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
@@ -53,7 +51,7 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -64,13 +62,14 @@ TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_USES_QCOM_BSP := true
 
 # Audio
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
-# BOARD_AUDIO_AMPLIFIER := device/htc/m8/libaudioamp
 BOARD_USES_ALSA_AUDIO := true
+AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
+AUDIO_FEATURE_ENABLED_FM := true
+AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
+AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -91,8 +90,6 @@ EXTENDED_FONT_FOOTPRINT := true
 
 # Graphics
 BOARD_EGL_CFG := device/htc/m8/configs/egl.cfg
-TARGET_DISPLAY_USE_RETIRE_FENCE := true
-TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 TARGET_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
@@ -109,9 +106,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/htc/m8/include
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Logging
-TARGET_USES_LOGD := false
-
 # NFC
 BOARD_NFC_HAL_SUFFIX := msm8974
 
@@ -120,6 +114,7 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
+BOARD_RIL_CLASS := ../../../device/htc/m8/ril
 
 # RPC
 TARGET_NO_RPC := true
@@ -150,7 +145,9 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 13153337344
 BOARD_FLASH_BLOCK_SIZE := 131072
+TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -178,12 +175,18 @@ BOARD_SEPOLICY_UNION += \
     mm-qcamerad.te \
     mpdecision.te \
     platform_app.te \
+    property_contexts \
+    recovery.te \
+    radio.te \
     rmt_storage.te \
     system_app.te \
+    system_server.te \
     tap2wake_dev.te \
     thermal-engine.te \
     ueventd.te \
-    vold.te
+    vibe_dev.te \
+    vold.te \
+    wpa.te
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true

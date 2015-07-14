@@ -81,20 +81,20 @@ void vendor_load_properties()
     } else if (strstr(bootmid, "0P6B70000")) {
         /* m8spr (m8whl) */
         cdma_properties("1", "8", "310120", "Sprint");
-        property_set("ro.build.fingerprint", "htc/sprint_wwe/htc_m8whl:4.4.2/KOT49H/326598.8:user/release-keys");
-        property_set("ro.build.description", "1.54.651.8 CL326598 release-keys");
-        property_set("ro.product.device", "m8spr");
-        property_set("ro.build.product", "m8spr");
+        property_set("ro.build.fingerprint", "htc/sprint_wwe/htc_m8whl:5.0.1/LRX22C/476182.10:user/release-keys");
+        property_set("ro.build.description", "4.20.651.10 CL476182 release-keys");
+        property_set("ro.product.device", "htc_m8whl");
+        property_set("ro.build.product", "htc_m8whl");
         property_set("telephony.sms.pseudo_multipart", "1");
-        property_set("ro.ril.oem.ecclist", "911");
         property_set("ro.ril.enable.pre_r8fd=1", "1");
-        property_set("ro.ril.enable.sdr", "0");
+        property_set("ro.ril.oem.ecclist", "911");
         property_set("ro.ril.set.mtusize", "1422");
+        property_set("ro.telephony.ril_class", "m8sprRIL");
     } else {
         /* m8 */
-        property_set("ro.build.fingerprint", "htc/htc_europe/htc_m8:4.4.2/KOT49H/325784.5:user/release-keys");
-        property_set("ro.build.description", "1.54.401.5 CL325784 release-keys");
-        property_set("ro.product.device", "m8");
+        property_set("ro.build.fingerprint", "htc/m8_google/htc_m8:5.1/LMY47O.H4/519376:user/release-keys");
+        property_set("ro.build.description", "4.04.1700.4 CL519376 release-keys");
+        property_set("ro.product.device", "htc_m8");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
     }
@@ -116,7 +116,6 @@ void cdma_properties(char default_cdma_sub[], char default_network[],
     property_set("gsm.operator.alpha", operator_numeric);
 
     property_set("telephony.lteOnCdmaDevice", "1");
-    property_set("ro.cdma.subscribe_on_ruim_ready", "true");
     property_set("ro.ril.svdo", "true");
     property_set("ro.ril.disable.fd.plmn.prefix", "23402,23410,23411,23420");
     property_set("ro.ril.enable.sdr", "0");

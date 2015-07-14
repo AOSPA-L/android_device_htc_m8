@@ -16,6 +16,7 @@ ro.ril.def.agps.mode=1
 ro.telephony.call_ring.multiple=false
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
+persist.radio.apm_sim_not_pwdn=1
 persist.radio.jbims=1
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
@@ -37,11 +38,11 @@ ro.qualcomm.perf.cores_online=2
 
 # Audio
 audio.offload.buffer.size.kb=32
-audio.offload.gapless.enabled=false
+audio.offload.gapless.enabled=true
 av.offload.enable=true
 av.streaming.offload.enable=true
-audio.offload.24bit.enable=1
-audio.offload.pcm.enable=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.speaker=true
 ro.qc.sdk.audio.fluencetype=fluence
@@ -51,6 +52,9 @@ use.voice.path.for.pcm.voip=false
 # AV
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
+
+# Camera
+persist.camera.maxopen=3
 
 # GPS
 persist.gps.qc_nlp_in_use=0
@@ -71,11 +75,8 @@ ro.sf.lcd_density=480
 debug.nfc.fw_download=true
 debug.nfc.fw_boot_download=false
 
-# Recovery
-ro.cwm.enable_key_repeat=true
-ro.cwm.repeatable_keys=114,115
-
 # USB
+persist.sys.isUsbOtgEnabled=true
 persist.sys.usb.config=mtp
 
 # Wifi

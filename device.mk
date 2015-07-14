@@ -28,7 +28,7 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
 # Device uses ultra-high-density artwork where available
-PRODUCT_AAPT_CONFIG := hdpi xhdpi xxhdpi
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Dot View Case
@@ -53,6 +53,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
@@ -77,28 +78,23 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    audio_amplifier.msm8974 \
     audio_policy.msm8974 \
     audio.primary.msm8974 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
+    libqcompostprocbundle \
     libqcomvisualizer \
+    libqcomvoiceprocessing \
     tinymix
-
-PRODUCT_PACKAGES += \
-    libaudioamp
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/audio/soundimage/srsfx_trumedia_ext.cfg:system/etc/soundimage/srsfx_trumedia_ext.cfg \
-    $(LOCAL_PATH)/audio/soundimage/srsfx_trumedia_ext_HS250.cfg:system/etc/soundimage/srsfx_trumedia_ext_HS250.cfg \
-    $(LOCAL_PATH)/audio/soundimage/srsfx_trumedia_ext_MAX300.cfg:system/etc/soundimage/srsfx_trumedia_ext_MAX300.cfg \
-    $(LOCAL_PATH)/audio/soundimage/srsfx_trumedia_int.cfg:system/etc/soundimage/srsfx_trumedia_int.cfg \
-    $(LOCAL_PATH)/audio/soundimage/srsmodels.lic:system/etc/soundimage/srsmodels.lic
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -115,6 +111,10 @@ PRODUCT_PACKAGES += \
     libqcomfm_jni \
     FM2 \
     FMRecord
+
+# GPS
+PRODUCT_COPY_FILES += \
+    device/htc/m8/configs/gps.conf:system/etc/gps.conf
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -156,7 +156,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
@@ -195,11 +194,16 @@ PRODUCT_PACKAGES += \
     qcmediaplayer
 
 PRODUCT_BOOT_JARS += \
-    qcmediaplayer
+    qcmediaplayer \
+    htcirlibs
 
 # Power
 PRODUCT_PACKAGES += \
     power.msm8974
+
+# Keystore
+PRODUCT_PACKAGES += \
+    keystore.msm8974
 
 # Thermal
 PRODUCT_COPY_FILES += \
@@ -219,8 +223,8 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 # Variant linking script
-PRODUCT_PACKAGES += \
-    makelinks.sh
+PRODUCT_COPY_FILES += \
+    device/htc/m8/releasetools/variant_script.sh:install/bin/variant_script.sh
 
 # Wifi firmware
 PRODUCT_PACKAGES += \
@@ -233,7 +237,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
@@ -242,4 +245,5 @@ PRODUCT_PACKAGES += \
     hostapd_default.conf \
     dhcpcd.conf \
     libwpa_client \
-    wpa_supplicant
+    wpa_supplicant \
+    wpa_supplicant.conf
