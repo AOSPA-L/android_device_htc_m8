@@ -1,9 +1,9 @@
 [
     {
         "remote": "github",
-        "repository": "xboxfanj/android_kernel_htc_msm8974",
+        "repository": "CyanogenMod/android_kernel_htc_msm8974",
         "target_path": "kernel/htc/msm8974",
-        "revision": "lp5.0"
+        "revision": "cm-12.1"
     },
     {
         "remote":       "github",
@@ -18,9 +18,9 @@
         "revision":    "cm-12.1"
     },
     {
-        "remote": "github",
-        "repository": "TeamEOS/vendor_htc",
+        "remote": "blobs",
+        "repository": "proprietary_vendor_htc",
         "target_path": "vendor/htc",
-        "revision": "lp5.0"
+        "revision": "cm-12.1"
     }
 ]
