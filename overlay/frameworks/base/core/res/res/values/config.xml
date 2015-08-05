@@ -311,4 +311,9 @@
     <bool name="config_dozeAfterScreenOff">true</bool>
     <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+
+    <!-- Default values for display color temperature -->
+    <integer name="config_dayColorTemperature">7000</integer>
+    <integer name="config_nightColorTemperature">4000</integer>
+
 </resources>
